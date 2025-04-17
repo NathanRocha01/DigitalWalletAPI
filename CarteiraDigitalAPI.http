@@ -1,0 +1,6 @@
+@CarteiraDigitalAPI_HostAddress = http://localhost:5002
+
+GET {{CarteiraDigitalAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

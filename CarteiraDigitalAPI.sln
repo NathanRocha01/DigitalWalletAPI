@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarteiraDigitalAPI", "CarteiraDigitalAPI.csproj", "{F19E1ECD-2811-4CB2-AFD8-A1776908F0EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{6BE6953F-961E-4453-889F-8F52AB48D494}"
+	ProjectSection(SolutionItems) = preProject
+		AuthController.cs = AuthController.cs
+		CarteiraController.cs = CarteiraController.cs
+		TransferenciaController.cs = TransferenciaController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B1AEAFA0-509E-4442-A48B-2A8E8882CE78}"
+	ProjectSection(SolutionItems) = preProject
+		Carteira.cs = Carteira.cs
+		Transferencia.cs = Transferencia.cs
+		Usuario.cs = Usuario.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{93BBDBCE-F4F0-4428-9153-74767B7A5768}"
+	ProjectSection(SolutionItems) = preProject
+		CarteiraDbContext.cs = CarteiraDbContext.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTOs", "DTOs", "{5390B8C5-3CEB-4AE7-ACDF-4594BC942634}"
+	ProjectSection(SolutionItems) = preProject
+		AdicionarSaldoRequest.cs = AdicionarSaldoRequest.cs
+		LoginRequest.cs = LoginRequest.cs
+		RegisterRequest.cs = RegisterRequest.cs
+		TransferenciaRequest.cs = TransferenciaRequest.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BBB2F4F8-471B-4BC3-8AB6-78DAA8D5F28A}"
+	ProjectSection(SolutionItems) = preProject
+		AuthHelper.cs = AuthHelper.cs
+		TokenService.cs = TokenService.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F19E1ECD-2811-4CB2-AFD8-A1776908F0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19E1ECD-2811-4CB2-AFD8-A1776908F0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19E1ECD-2811-4CB2-AFD8-A1776908F0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19E1ECD-2811-4CB2-AFD8-A1776908F0EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {791140B8-AD09-4971-94E9-D09B08D07C83}
+	EndGlobalSection
+EndGlobal
