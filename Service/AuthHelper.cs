@@ -13,10 +13,21 @@ public static class AuthHelper
         return Convert.ToBase64String(hash);
     }
 
-    public static bool VerifyPassword(string senhaDigitada, string senhaHashSalva)
+    public static bool VerifyPassword(string passwordEndered, string savedHashPassword)
     {
-        var senhaHashDigitada = HashPassword(senhaDigitada);
-        return senhaHashDigitada == senhaHashSalva;
+        var hashPasswordEndered = HashPassword(passwordEndered);
+        return hashPasswordEndered == savedHashPassword;
+    }
+
+    public static int GetUserIdFromToken(HttpContext httpContext)
+    {
+        var userIdClaim = httpContext.User.FindFirst("id");
+        if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+        {
+            return userId;
+        }
+
+        throw new UnauthorizedAccessException("Unauthenticated user.");
     }
 
 }

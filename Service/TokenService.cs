@@ -5,7 +5,7 @@ using System.Text;
 
 public static class TokenService
 {
-    public static string GenerateToken(Usuario usuario, IConfiguration config)
+    public static string GenerateToken(User usuario, IConfiguration config)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
