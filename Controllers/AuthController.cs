@@ -6,31 +6,37 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly WalletDbContext _context;
-    private readonly IConfiguration _config;
-    public AuthController(WalletDbContext context, IConfiguration config)
+    private readonly UserService _user;
+    public AuthController(UserService user, IConfiguration config)
     {
-        _context = context;
-        _config = config;
+        _user = user;
     }
 
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest request)
     {
-        var user = _context.Users.SingleOrDefault(u => u.Email == request.Email);
-        if (user == null || !AuthHelper.VerifyPassword(request.Password, user.Password))
+        try
+        {
+            var token = _user.Authenticate(request);
+            return Ok(new { Token = token });
+        }
+        catch (UnauthorizedAccessException)
+        {
             return Unauthorized();
-
-        var token = TokenService.GenerateToken(user, _config);
-        return Ok(new { Token = token });
+        }
     }
 
     [HttpPost("register")]
     public IActionResult Register([FromBody] RegisterRequest request)
     {
-        var user = new User { Name = request.Name, Email = request.Email, Password = AuthHelper.HashPassword(request.Password) };
-        _context.Users.Add(user);
-        _context.SaveChanges();
-        return Ok();
+        try
+        {
+            _user.CreateUser(request);
+            return Ok();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }
