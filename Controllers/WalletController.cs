@@ -15,7 +15,7 @@ public class WalletController : ControllerBase
         _wallet = wallet;
     }
 
-    [HttpGet("wallet/balance")]
+    [HttpGet("balance")]
     public IActionResult CheckBalance()
     {
         try
@@ -30,7 +30,7 @@ public class WalletController : ControllerBase
         }
     }
 
-    [HttpPost("wallet/add")]
+    [HttpPost("deposit")]
     public IActionResult AddBalance([FromBody] AddBalanceRequest request)
     {
         try

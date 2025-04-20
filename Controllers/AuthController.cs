@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 public class AuthController : ControllerBase
 {
     private readonly UserService _user;
-    public AuthController(UserService user, IConfiguration config)
+    public AuthController(UserService user)
     {
         _user = user;
     }

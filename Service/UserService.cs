@@ -7,9 +7,10 @@ public class UserService
     private readonly WalletDbContext _context;
     private readonly IConfiguration _config;
 
-    public UserService(WalletDbContext context)
+    public UserService(WalletDbContext context, IConfiguration config)
     {
         _context = context;
+        _config = config;
     }
 
     public string Authenticate([FromBody] LoginRequest request)
@@ -35,6 +36,15 @@ public class UserService
 
         _context.Users.Add(user);
         _context.SaveChanges();
+
+        var wallet = new Wallet
+        {
+            UserId = user.Id,
+            Amount = 0
+        };
+
+        _context.Wallet.Add(wallet);
+        _context.SaveChangesAsync(); // Salva a carteira
     }
 
     public async Task<User?> GetUserById(int id)
