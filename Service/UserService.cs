@@ -44,7 +44,7 @@ public class UserService
         };
 
         _context.Wallet.Add(wallet);
-        _context.SaveChangesAsync(); // Salva a carteira
+        _context.SaveChanges(); 
     }
 
     public async Task<User?> GetUserById(int id)

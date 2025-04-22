@@ -31,7 +31,7 @@ public class TransferController : ControllerBase
         }
     }
 
-    [HttpGet("transfers")]
+    [HttpGet("list")]
     public IActionResult ListTransfers(DateTime? begin, DateTime? end)
     {
         try
