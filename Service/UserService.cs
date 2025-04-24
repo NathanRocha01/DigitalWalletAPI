@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 public class UserService
 {
 
-    private readonly WalletDbContext _context;
+    private readonly IWalletDbContext _context;
     private readonly IConfiguration _config;
 
-    public UserService(WalletDbContext context, IConfiguration config)
+    public UserService(IWalletDbContext context, IConfiguration config)
     {
         _context = context;
         _config = config;
