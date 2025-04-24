@@ -1,6 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-public class WalletDbContext : DbContext
+public interface IWalletDbContext
+{
+    DbSet<User> Users { get; set; }
+    DbSet<Wallet> Wallet { get; set; }
+    DbSet<Transfer> Transfers { get; set; }
+    int SaveChanges();
+}
+public class WalletDbContext : DbContext, IWalletDbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Wallet> Wallet { get; set; }

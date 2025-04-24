@@ -1,10 +1,10 @@
 public class TransferService
 {
-    private readonly WalletDbContext _context;
+    private readonly IWalletDbContext _context;
 
-    public TransferService(WalletDbContext context)
+    public TransferService(IWalletDbContext dbContext)
     {
-        _context = context;
+        _context = dbContext;
     }
 
     public void ExecuteTransfer(int originUserId, TransferRequest request)
@@ -17,6 +17,10 @@ public class TransferService
 
         if (originWallet.Amount < request.Amount)
             throw new InvalidOperationException("Insufficient balance");
+
+        if(request.Amount < 0)
+          throw new ArgumentException("Invalid transfer amount");
+
 
         originWallet.Amount -= request.Amount;
         destinationWallet.Amount += request.Amount;
