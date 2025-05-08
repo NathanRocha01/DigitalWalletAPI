@@ -81,6 +81,36 @@ JWT__ExpiresInHours=8
 - **Entity Framework Core 8**
 - **JWT Bearer Authentication**
 - **Swagger / Swashbuckle**
+- **xUnit (unit testing)**
+- **Moq (mocking dependencies)**
+- **FluentAssertions (assertions in tests)**
+
+## ⚙️ Project Decisions & Justifications
+
+### Why C# and ASP.NET Core?
+
+I chose to build this API using **C# and ASP.NET Core** because it provides a robust, high-performance, and secure framework for developing RESTful APIs. ASP.NET Core offers built-in support for dependency injection, authentication, and clean architectural patterns, making it a reliable choice for enterprise-grade APIs.
+
+### Why SQL Server?
+
+Although the challenge recommends PostgreSQL, I opted to use **SQL Server** due to my prior experience with it, which allows me to be more productive and ensure faster delivery. SQL Server integrates seamlessly with **Entity Framework Core**, and switching to PostgreSQL would require only minimal configuration changes (by adjusting the EF Core provider).
+
+## 🧪 Unit Testing
+
+The project includes **unit tests** using **xUnit** and **Moq** to validate core business rules and services.
+
+To run the tests:
+
+```bash
+dotnet test
+```
+The tests cover:
+
+Business rules validation (e.g., balance checks before transfers)
+
+Core services logic (e.g., user creation, transfers)
+
+Mocked database operations using in-memory context and mocks
 
 ## 🤝 Contributing
 
